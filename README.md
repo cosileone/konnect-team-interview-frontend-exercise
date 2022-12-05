@@ -1,6 +1,21 @@
+
+## Notes from Cosimo
+I tried going for a very feature complete implementation of the Service catalog, and even adding a few extra bells and whistles such as query parameter support for the search input. Pagination would normally store the values as query params as well, but in the spirit of time I chose not to implement those as search parameters in the url.
+
+Some other considerations I also did not implement fully included the stack of avatars in the ServiceCard, although that would have been a fun design exercise.
+
+Some notable helper libraries I would have imported would have been `date-fns` and `lodash/debounce` (and possibly tailwindCSS) to help with some functionality. Again, I chose not to implement those in the spirit of a quick implementation.
+
+Most of the time spent on the assignment was actually dedicated to "unlearning" habits from vue 2 options API and replacing them with composition API best-practices.
+
+Minor nit: there were so many colors and especially shades of grey involved in this design, I would have definitely asked design to consolidate all the colors. Another design consideration is that I would have a proper svg pipeline instead of storing SVG assets as components
+
+A big and obvious omission was the implementation of component tests and unit tests: this was intentional as I tried to use most of my time for development and iteration, although normally a new feature like this should be well tested with at least a cypress integration test.
+
+
 # Welcome
 
-Please take the time to read through all of the sections below; we want you to do great! :rocket:
+Please take the time to read through all the sections below; we want you to do great! :rocket:
 
 Feel free to reach out to your recruiting contact with any questions or concerns.
 
@@ -8,7 +23,7 @@ Feel free to reach out to your recruiting contact with any questions or concerns
 
 Modify the provided Vue 3 app to match [this mock](https://www.figma.com/file/swzJVL624G434CVdWi3FLv/Core-UI-Team-Project) as closely as possible while utilizing best-practices to improve the codebase and implement the functional requirements outlined below.
 
-- The provided exercise files are a starting point and they have room for improvement; feel free to modify
+- The provided exercise files are a starting point, and they have room for improvement; feel free to modify
 - Don't treat the mock as gospel -- if you see things that don't make sense, ask questions or implement what you think is right
 - In the exercise you are utilizing a local API; however, you should code your submission as if you are using a production API
 

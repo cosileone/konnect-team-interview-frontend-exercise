@@ -1,26 +1,29 @@
 import { ref, onBeforeMount } from 'vue'
 import axios from 'axios'
-
-// This composable is a simplified example for the exercise.
-// Feel free to leave as-is, modify, or remove this file (and any others) as desired.
-// https://vuejs.org/guide/reusability/composables.html
+import { useServicesStore } from '@/stores/services'
+import { storeToRefs } from 'pinia'
 
 export default function useServices(): any {
-  const services = ref<any[]>([])
+  const servicesStore = useServicesStore()
+  const { services } = storeToRefs(servicesStore)
   const loading = ref<any>(false)
 
-  const getServices = async (): Promise<any> => {
+  const getServices = async (params = {}): Promise<any> => {
     // Initialize loading state
     loading.value = true
 
     // Fetch data from the API
-    const result = await axios.get('/api/services')
+    const result = await axios.get('/api/services', {
+      params,
+    })
 
     // Store data in Vue ref
     services.value = result.data
 
     // Reset loading state
     loading.value = false
+
+    return result.data
   }
 
   onBeforeMount(async (): Promise<void> => {
@@ -32,5 +35,6 @@ export default function useServices(): any {
   return {
     services,
     loading,
+    getServices, // normally this would be wrapped in a debounce function
   }
 }
